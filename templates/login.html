@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <link rel="stylesheet" href="/static/styles/login.css">
+  <link rel="stylesheet" href="/static/styles/style.css">
+  <title>Chemistry Virtual Lab</title>
+  <!--<link rel="icon" type="image/x-icon" href="/static/assets/web_icon.png">-->
+
+</head>
+<header>
+    <h2 class="logo">Acid Base Titration    </h2>
+    <nav class="navigation">
+    
+    </nav>
+    <script src="/static/scripts/helpers.js"></script>
+</header>
+<body>
+    <form method="post">
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form>
+                    <h2>Variables</h2>
+                    <center class="mb-3">
+                    </center>
+                    <p>Titrant:</p>
+                    <p><select name="'titrant" id="titrant">
+                        <option value="Hydrochloric acid">Hydrochloric acid</option>
+                        <option value="Sulphuric acid">Sulphuric acid</option>
+                        <option value="Hydrobromic acid">Hydrobromic acid</option>
+                        <option value="Oxalic acid">Oxalic acid</option>
+                        <option value="Acetic acid">Acetic acid</option>
+                    </select>  </p> 
+                    <div class='slider'>
+                            <p>Speed of Titration: 0.1</p>
+                            <input type="range" min="1" max="10  " value="1" id="slider" name="sli"/>
+                            
+                    </div>
+                    <p>Titrate:</p>
+                    <p><select name="'titrate" id="titrate">
+                        <option value="Sodium hydroxide">Sodium hydroxide</option>
+                        <option value="Potassium hydroxide">Potassium hydroxide</option>
+                        <option value="Ammonia">Ammonia</option>
+                        <option value="Sodium carbonate">Sodium carbonate</option>
+                    </select>  </p>
+                    <div class='slider'>
+                        <p>Normality of Titrate: 0.1N</p>
+                        <input type="range" min="1" max="20  " value="1" id="slider" name="sli"/>
+                        
+                    </div>
+                    <div class='slider'>
+                        <p>Volume of Titrate: 10ml</p>
+                        <input type="range" min="10" max="20  " value="1" id="slider" name="sli"/>
+                       
+                    </div>
+                    <p>Indicator:</p>
+                    <p><select name="indicator" id="indicator">
+                        <option value="Methyl Orange">Methyl Orange</option>
+                        <option value="Phenolphyhalein">Phenolphyhalein</option>
+                        <option value="Methyl Red">Methyl Red</option>
+                    </select></p>
+                    
+                    <button type="submit" class="btn-primary" id="start">Start</button>
+
+                    <button type="reset" class="btn-primary"id='Reset'>Reset</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </form>
+</body>
+</html>
