@@ -20,7 +20,7 @@ def home():
             volume = float(volume)
             
             # Perform a basic calculation (example: amount of titrant needed)
-            calculation = normality * volume  # Example calculation, adjust as needed
+            calculation = normality * volume  
 
             # Store the results in a dictionary to pass to the template
             result = {
