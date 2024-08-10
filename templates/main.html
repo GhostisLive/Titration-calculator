@@ -8,6 +8,7 @@
 <body>
     <header>
         <h2 class="logo">Acid Base Titration</h2>
+        <!-- Consider removing the empty navigation if not used -->
         <nav class="navigation"></nav>
     </header>
     <section>
@@ -16,13 +17,15 @@
                 <form method="post">
                     <h2>Variables</h2>
                     <p><strong>Titrant:</strong></p>
-                    <p><select name="titrant" id="titrant">
-                        <option value="Hydrochloric acid">Hydrochloric acid</option>
-                        <option value="Sulphuric acid">Sulphuric acid</option>
-                        <option value="Hydrobromic acid">Hydrobromic acid</option>
-                        <option value="Oxalic acid">Oxalic acid</option>
-                        <option value="Acetic acid">Acetic acid</option>
-                    </select></p> 
+                    <p>
+                        <select name="titrant" id="titrant">
+                            <option value="Hydrochloric acid">Hydrochloric acid</option>
+                            <option value="Sulphuric acid">Sulphuric acid</option>
+                            <option value="Hydrobromic acid">Hydrobromic acid</option>
+                            <option value="Oxalic acid">Oxalic acid</option>
+                            <option value="Acetic acid">Acetic acid</option>
+                        </select>
+                    </p> 
 
                     <div class='slider'>
                         <p><strong>Speed of Titration: </strong><span id="speedValue">0.1</span></p>
@@ -30,12 +33,14 @@
                     </div>
 
                     <p><strong>Titrate:</strong></p>
-                    <p><select name="titrate" id="titrate">
-                        <option value="Sodium hydroxide">Sodium hydroxide</option>
-                        <option value="Potassium hydroxide">Potassium hydroxide</option>
-                        <option value="Ammonia">Ammonia</option>
-                        <option value="Sodium carbonate">Sodium carbonate</option>
-                    </select></p>
+                    <p>
+                        <select name="titrate" id="titrate">
+                            <option value="Sodium hydroxide">Sodium hydroxide</option>
+                            <option value="Potassium hydroxide">Potassium hydroxide</option>
+                            <option value="Ammonia">Ammonia</option>
+                            <option value="Sodium carbonate">Sodium carbonate</option>
+                        </select>
+                    </p>
 
                     <div class='slider'>
                         <p><strong>Normality of Titrate: </strong><span id="normalityValue">0.1N</span></p>
@@ -48,17 +53,18 @@
                     </div>
 
                     <p><strong>Indicator:</strong></p>
-                    <p><select name="indicator" id="indicator">
-                        <option value="Methyl Orange">Methyl Orange</option>
-                        <option value="Phenolphthalein">Phenolphthalein</option>
-                        <option value="Methyl Red">Methyl Red</option>
-                    </select></p>
+                    <p>
+                        <select name="indicator" id="indicator">
+                            <option value="Methyl Orange">Methyl Orange</option>
+                            <option value="Phenolphthalein">Phenolphthalein</option>
+                            <option value="Methyl Red">Methyl Red</option>
+                        </select>
+                    </p>
                     
                     <button type="submit" class="btn-primary" id="start">Start</button>
                     <button type="reset" class="btn-primary" id="reset">Reset</button>
                 </form>
 
-            
                 <div class="result-box">
                     <h2>Results</h2>
                     <p><strong>Titrant:</strong> {{ result['titrant'] }}</p>
@@ -68,12 +74,9 @@
                     <p><strong>Indicator:</strong> {{ result['indicator'] }}</p>
                     <p><strong>Titrant used:</strong> {{ result['calculation'] if result else 0 }} ml</p>
                 </div>
-                
             </div>
         </div>
     </section>
-
--
 
     <script>
         // Update slider values dynamically
@@ -86,15 +89,15 @@
         const volumeValue = document.getElementById('volumeValue');
 
         speedSlider.oninput = () => {
-            speedValue.textContent = speedSlider.value;
+            speedValue.textContent = parseFloat(speedSlider.value).toFixed(1);
         }
 
         normalitySlider.oninput = () => {
-            normalityValue.textContent = normalitySlider.value + 'N';
+            normalityValue.textContent = parseFloat(normalitySlider.value).toFixed(1) + 'N';
         }
 
         volumeSlider.oninput = () => {
-            volumeValue.textContent = volumeSlider.value + 'ml';
+            volumeValue.textContent = parseFloat(volumeSlider.value).toFixed(0) + 'ml';
         }
     </script>
 

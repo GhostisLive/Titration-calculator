@@ -5,30 +5,38 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     result = None
-    calculation = None
     if request.method == 'POST':
-        titrant = request.form.get("titrant")
-        speed = request.form.get("speed")
-        titrate = request.form.get("titrate")
-        normality = float(request.form.get("normality", 0))  # Convert to float for calculations
-        volume = float(request.form.get("volume", 0))  # Convert to float for calculations
-        indicator = request.form.get("indicator")
+        # Get form data with default values if not provided
+        titrant = request.form.get("titrant", "Not specified")
+        speed = request.form.get("speed", "Not specified")
+        titrate = request.form.get("titrate", "Not specified")
+        normality = request.form.get("normality", "0.0")
+        volume = request.form.get("volume", "0.0")
+        indicator = request.form.get("indicator", "Not specified")
+        
+        try:
+            # Convert to float for calculations
+            normality = float(normality)
+            volume = float(volume)
+            
+            # Perform a basic calculation (example: amount of titrant needed)
+            calculation = normality * volume  # Example calculation, adjust as needed
 
-        # Perform a basic calculation (example: amount of titrant needed)
-        # Assuming normality (N) and volume (mL) of titrate, and a simple calculation
-        # For demonstration purposes, let's assume the result is calculated as:
-        calculation = normality * volume  # Example calculation, adjust as needed
-
-        # Store the results in a dictionary to pass to the template
-        result = {
-            'titrant': titrant,
-            'speed': speed,
-            'titrate': titrate,
-            'normality': f"{normality} N",
-            'volume': f"{volume} ml",
-            'indicator': indicator,
-            'calculation': calculation 
-        }
+            # Store the results in a dictionary to pass to the template
+            result = {
+                'titrant': titrant,
+                'speed': speed,
+                'titrate': titrate,
+                'normality': f"{normality} N",
+                'volume': f"{volume} ml",
+                'indicator': indicator,
+                'calculation': f"{calculation:.2f}"  # Format result to two decimal places
+            }
+        except ValueError:
+            # Handle the case where conversion to float fails
+            result = {
+                'error': 'Invalid input for normality or volume. Please enter valid numbers.'
+            }
 
     return render_template('main.html', result=result)
 

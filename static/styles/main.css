@@ -42,12 +42,12 @@ section {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .form-box {
-    top: 100px;
+    top: 80px;
 }
 
 .result-box {
