@@ -1,24 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'poppins',sans-serif;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
+
+body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 section {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    
     background: white;
     background-position: center;
     background-size: cover;
 }
-.form-box{
-    position: right;
+
+.form-box, .result-box {
+    position: absolute;
+    right: 50px;
     width: 300px;
-    height: 650px;
+    height: auto;
     background: transparent;
     border: 2px solid rgba(5, 5, 5, 0.5);
     border-radius: 20px;
@@ -26,16 +41,29 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
+    padding: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-h2{
+
+.form-box {
+    top: 100px;
+}
+
+.result-box {
+    top: calc(10px + 100% + 20px);
+    right: -3px;
+}
+
+h2 {
     font-size: 2em;
     color: #0b0b0b;
     text-align: center;
     min-height: 60px;
+    transition: color 0.3s ease;
 }
 
-button{
+button {
     width: 100%;
     height: 30px;
     border-radius: 40px;
@@ -46,72 +74,25 @@ button{
     font-size: 1em;
     font-weight: 600;
     margin: 5px;
-    
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-select{
-    width: 180px;
-    height: 40px;
-   
-    background: #ffffff;
-    border: 1px solid #000000;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 60;
-    margin: 2px;
-    
- }
 
-.slider{
-    margin:24px auto;
+select, .slider {
+    width: 100%;
+    margin: 5px 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+p {
+    font-size: 1em;
+    color: #0b0b0b;
+    transition: color 0.3s ease;
+}
+
+.slider {
+    margin: 24px auto;
     position: relative;
     width: 100%;
-}
-
-#slider{
-    -webkit-appearance: none;
-    width: 100%;
-    height: 3px;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    z-index: 2222;width:100%;
-    border-radius: 50%;
-}
-
-.slider .slidervalue {
-    position:relative;
-    width:100%;
-}
-
-
-.slider .slidervalue span{
-    position:absolute;
-    width:30px;
-    height:30px;
-    color: #000000;
-    font-weight: 500;
-    top: -40px;
-    transform: translateX(-50%);
-    line-height: 55px;
-    z-index:2;
-}
-
-.slider .slidervalue span:after {
-    position:absolute;
-    content: '';
-    width:30px;
-    height: 30px;
-    background: #ff0000;
-    transform: translateX(-50%) rotate(45deg);
-    border: 3px solid #fff;
-    z-index:-1;
-    left: 50%;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-
 }
 
 .slider input::-webkit-slider-thumb{
@@ -125,16 +106,7 @@ select{
     cursor: pointer;
 }
 
-.slider input{
-    -webkit-appearance: none;
-    width: 100%;
-    height: 3px;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    z-index: 2222;
-}
+
 
 .slider input{
   -webkit-appearance: none;

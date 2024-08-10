@@ -1,83 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
-  <link rel="stylesheet" href="/static/styles/main.css">
-  <link rel="stylesheet" href="/static/styles/style.css">
-  <title>Chemistry Virtual Lab</title>
-  <!--<link rel="icon" type="image/x-icon" href="/static/assets/web_icon.png">-->
-
+<head>
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <title>Chemistry Virtual Lab</title>
 </head>
-<header>
-    <h2 class="logo">Acid Base Titration    </h2>
-    <nav class="navigation">
-    </nav>
-</header>
 <body>
-    <form method="post">
+    <header>
+        <h2 class="logo">Acid Base Titration</h2>
+        <nav class="navigation"></nav>
+    </header>
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form>
+                <form method="post">
                     <h2>Variables</h2>
-                    <center class="mb-3">
-                    </center>
-                    <p>Titrant:</p>
-                    <p><select name="'titrant" id="titrant">
+                    <p><strong>Titrant:</strong></p>
+                    <p><select name="titrant" id="titrant">
                         <option value="Hydrochloric acid">Hydrochloric acid</option>
                         <option value="Sulphuric acid">Sulphuric acid</option>
                         <option value="Hydrobromic acid">Hydrobromic acid</option>
                         <option value="Oxalic acid">Oxalic acid</option>
                         <option value="Acetic acid">Acetic acid</option>
-                    </select>  </p> 
+                    </select></p> 
+
                     <div class='slider'>
-                        <p>Speed of Titration: 0.1</p>
-                        <div class="slidervalue"><span>1</span></div>
-                            <input type="range" min="1" max="10  " value="1" id="slider" name="sli"/>
-                            
+                        <p><strong>Speed of Titration: </strong><span id="speedValue">0.1</span></p>
+                        <input type="range" min="0.1" max="1" step="0.1" value="0.1" id="speedSlider" name="speed"/>
                     </div>
-                    <p>Titrate:</p>
-                    <p><select name="'titrate" id="titrate">
+
+                    <p><strong>Titrate:</strong></p>
+                    <p><select name="titrate" id="titrate">
                         <option value="Sodium hydroxide">Sodium hydroxide</option>
                         <option value="Potassium hydroxide">Potassium hydroxide</option>
                         <option value="Ammonia">Ammonia</option>
                         <option value="Sodium carbonate">Sodium carbonate</option>
-                    </select>  </p>
+                    </select></p>
+
                     <div class='slider'>
-                        <p>Normality of Titrate: 0.1N</p>
-                        <input type="range" min="1" max="20  " value="1" id="slider" name="sli"/>
-                        
+                        <p><strong>Normality of Titrate: </strong><span id="normalityValue">0.1N</span></p>
+                        <input type="range" min="0.1" max="2" step="0.1" value="0.1" id="normalitySlider" name="normality"/>
                     </div>
+
                     <div class='slider'>
-                        <p>Volume of Titrate: 10ml</p>
-                        <input type="range" min="10" max="20  " value="1" id="slider" name="sli"/>
-                       
+                        <p><strong>Volume of Titrate: </strong><span id="volumeValue">10ml</span></p>
+                        <input type="range" min="10" max="20" step="1" value="10" id="volumeSlider" name="volume"/>
                     </div>
-                    <p>Indicator:</p>
+
+                    <p><strong>Indicator:</strong></p>
                     <p><select name="indicator" id="indicator">
                         <option value="Methyl Orange">Methyl Orange</option>
-                        <option value="Phenolphyhalein">Phenolphyhalein</option>
+                        <option value="Phenolphthalein">Phenolphthalein</option>
                         <option value="Methyl Red">Methyl Red</option>
                     </select></p>
                     
                     <button type="submit" class="btn-primary" id="start">Start</button>
-
-                    <button type="reset" class="btn-primary"id='Reset'>Reset</button>
-
+                    <button type="reset" class="btn-primary" id="reset">Reset</button>
                 </form>
+
+            
+                <div class="result-box">
+                    <h2>Results</h2>
+                    <p><strong>Titrant:</strong> {{ result['titrant'] }}</p>
+                    <p><strong>Titrate:</strong> {{ result['titrate'] }}</p>
+                    <p><strong>Normality of Titrate:</strong> {{ result['normality'] }}</p>
+                    <p><strong>Volume of Titrate:</strong> {{ result['volume'] }}</p>
+                    <p><strong>Indicator:</strong> {{ result['indicator'] }}</p>
+                    <p><strong>Titrant used:</strong> {{ result['calculation'] if result else 0 }} ml</p>
+                </div>
+                
             </div>
         </div>
     </section>
-    <script>
-        const slidervalue = document.querySelector('span');
-        const inputslider = document.querySelector('input');
-        inputslider.oninput = (()=>{
-            let value = inputslider.value;
-            slidervalue.textContent = value;
-        })
 
+-
+
+    <script>
+        // Update slider values dynamically
+        const speedSlider = document.getElementById('speedSlider');
+        const normalitySlider = document.getElementById('normalitySlider');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        const speedValue = document.getElementById('speedValue');
+        const normalityValue = document.getElementById('normalityValue');
+        const volumeValue = document.getElementById('volumeValue');
+
+        speedSlider.oninput = () => {
+            speedValue.textContent = speedSlider.value;
+        }
+
+        normalitySlider.oninput = () => {
+            normalityValue.textContent = normalitySlider.value + 'N';
+        }
+
+        volumeSlider.oninput = () => {
+            volumeValue.textContent = volumeSlider.value + 'ml';
+        }
     </script>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    </form>
 </body>
 </html>
