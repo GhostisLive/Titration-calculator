@@ -27,11 +27,23 @@ section {
     background: white;
     background-position: center;
     background-size: cover;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+
+}
+.titer_img_div{
+    right: 100%;
+}
+.titer_img{
+    width: 50%;
+    height: auto;
+    right: 100%;
 }
 
 .form-box, .result-box {
     position: absolute;
-    right: 50px;
+    /* left: 50px; */
     width: 300px;
     height: auto;
     background: transparent;
